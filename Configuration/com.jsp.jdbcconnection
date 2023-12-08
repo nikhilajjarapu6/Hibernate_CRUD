@@ -1,0 +1,11 @@
+package com.jsp.connections;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class ConnectionJPA {
+	public EntityManagerFactory createEntityManagerFactory(String name) {
+		return Persistence.createEntityManagerFactory(name);
+	}
+
+}
