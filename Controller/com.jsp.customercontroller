@@ -1,0 +1,89 @@
+package com.jsp.customercontroller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.jsp.customerdto.Customer;
+import com.jsp.customerservices.CustomerServices;
+
+public class Controller {
+	public static void main(String[] args) {
+		CustomerServices services=new CustomerServices();
+		Scanner r=new Scanner(System.in);
+		boolean loop=true;
+		while(loop) {
+		System.out.println("enter your choice to perform operation");
+		System.out.println("1.save");
+		System.out.println("2.display all");
+		System.out.println("3.update");
+		System.out.println("4.get by id");
+		System.out.println("5.remove");
+		System.out.println("10.exit");
+		int choice=r.nextInt();
+		switch(choice) {
+		case 1:{
+			Customer customer=new Customer();
+			System.out.println("enter id :");
+			customer.setId(r.nextInt());
+			System.out.println("enter name");
+			customer.setName(r.next());
+			System.out.println("enter email");
+			customer.setEmail(r.next());
+			System.out.println("enter phno");
+			customer.setPh(r.nextLong());
+			services.save(customer);
+			System.out.println("saved");
+			break;
+			}
+		case 2:
+			System.out.println("cmplete list of customers");
+			List<Customer> list=new ArrayList<Customer>();
+			list=services.display();
+			for(Customer customer:list) {
+				System.out.println(customer);
+			}
+			break;
+			
+		case 3:{
+			Customer customer=new Customer();
+			System.out.println("enter id :");
+			customer.setId(r.nextInt());
+			System.out.println("enter name");
+			customer.setName(r.next());
+			System.out.println("enter email");
+			customer.setEmail(r.next());
+			System.out.println("enter phno");
+			customer.setPh(r.nextLong());
+			services.update(customer);
+			System.out.println("saved");
+			break;
+		}
+		
+		case 4:{
+			System.out.println("enter id to fetch customer");
+			Customer customer=services.getById(r.nextInt());
+			System.out.println(customer.getId()+" "+customer.getName()+" "+customer.getEmail()+" "+customer.getPh());
+			break;
+		}
+		case 5:{
+			System.out.println("enter id to delete customer");
+			Customer customer=services.remove(r.nextInt());
+			System.out.println(customer.getId()+" "+customer.getName()+" "+customer.getEmail()+" "+customer.getPh());
+			break;
+		}
+		case 10:{
+			System.out.println("bye bye");
+			loop=false;
+			break;
+		}
+		default :{
+			System.out.println("invalid choice");
+		}
+		
+		}
+		
+		
+		}	
+	}
+}
