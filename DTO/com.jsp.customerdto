@@ -1,0 +1,46 @@
+package com.jsp.onetoone;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Aadhar {
+	@Id
+	private int id;
+	private String address;
+	private String dOB;
+	@OneToOne(mappedBy = "a")
+	private Person p;
+	
+	public Person getP() {
+		return p;
+	}
+	public void setP(Person p) {
+		this.p = p;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getdOB() {
+		return dOB;
+	}
+	public void setdOB(String dOB) {
+		this.dOB = dOB;
+	}
+	
+	
+	
+	
+
+}
